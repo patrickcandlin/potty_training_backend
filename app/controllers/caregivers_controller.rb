@@ -1,9 +1,12 @@
 class CaregiversController < ApplicationController
 
     def create
-        caregiver = Cargiver.new(params(:caregiver))
-        if(caregiver.save)
-            # send some response back
+        caregiver = Caregiver.create(caregiver_params)
+        if caregiver.valid?
+            render json: { user: CaregiverSerializer.new(caregiver) }, status: :created
+        else
+            print(caregiver)
+            render json: { error: 'failed to create user' }, status: :not_acceptable
         end
     end
 
