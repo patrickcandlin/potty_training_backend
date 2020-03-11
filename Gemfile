@@ -19,6 +19,7 @@ gem 'puma', '~> 4.1'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
+gem 'faker'
 
 gem 'http'
 gem 'json'
@@ -34,7 +35,14 @@ gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+end
+
+group :test do
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
 
 group :development do
