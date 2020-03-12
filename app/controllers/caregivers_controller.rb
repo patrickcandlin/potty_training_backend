@@ -5,7 +5,6 @@ class CaregiversController < ApplicationController
         if caregiver.valid?
             render json: { user: CaregiverSerializer.new(caregiver) }, status: :created
         else
-            print(caregiver)
             render json: { error: 'failed to create user' }, status: :not_acceptable
         end
     end
