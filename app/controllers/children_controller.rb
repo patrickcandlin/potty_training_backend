@@ -1,7 +1,7 @@
-class ChildrenController < AppplicationController
+class ChildrenController < ApplicationController
 
     def create
-        child = Child.create(child_parmas)
+        child = Child.create(child_params)
         if child.valid?
             render json: { child: ChildSerializer.new(child) }, status: :created 
         else
@@ -10,8 +10,8 @@ class ChildrenController < AppplicationController
     end
 
     private
-    def child_parmas
-        parmas.require(:child).permit(:name, :birthdate, :secret)
+    def child_params
+        params.require(:child).permit(:name, :birthday, :secret)
     end
     
 end
