@@ -20,7 +20,7 @@ gem 'puma', '~> 4.1'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 gem 'faker'
-
+gem 'rubocop-rspec'
 gem 'http'
 gem 'json'
 gem "active_model_serializers"
