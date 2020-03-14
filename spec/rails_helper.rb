@@ -46,7 +46,7 @@ RSpec.configure do |config|
     end
   end
   
-  config.include FactoryBot::Syntax::Method
+  config.include FactoryBot::Syntax::Methods
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
