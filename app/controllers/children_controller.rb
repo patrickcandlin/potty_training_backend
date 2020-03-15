@@ -14,7 +14,11 @@ class ChildrenController < ApplicationController
     end
 
     def list_potties
-        render json: @child.list_potties
+        if(@child != nil)
+            render json: @child.list_potties
+        else
+            render json: { error: 'records not found' }, status: :not_found
+        end
     end
 
     private
