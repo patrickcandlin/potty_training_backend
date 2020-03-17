@@ -1,5 +1,7 @@
 class Child < ApplicationRecord
     has_many :potties
+    has_many :child_caregivers
+    has_many :caregivers, through: :child_caregivers
     validates :name, presence: true 
 
     def list_potties
