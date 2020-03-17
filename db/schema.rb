@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_14_184845) do
+ActiveRecord::Schema.define(version: 2020_03_17_042020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2020_03_14_184845) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "child_caregivers", force: :cascade do |t|
+    t.bigint "caregiver_id", null: false
+    t.bigint "child_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["caregiver_id"], name: "index_child_caregivers_on_caregiver_id"
+    t.index ["child_id"], name: "index_child_caregivers_on_child_id"
   end
 
   create_table "children", force: :cascade do |t|
@@ -43,5 +52,7 @@ ActiveRecord::Schema.define(version: 2020_03_14_184845) do
     t.index ["child_id"], name: "index_potties_on_child_id"
   end
 
+  add_foreign_key "child_caregivers", "caregivers"
+  add_foreign_key "child_caregivers", "children"
   add_foreign_key "potties", "children"
 end
